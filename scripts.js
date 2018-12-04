@@ -226,5 +226,30 @@ var finalPaid = [bills[0] + tips[0],
     
 console.log(tips, finalPaid);
 
-//nic som neurobila uuiii
-ijiofwj
+
+//Objects and properties
+
+//Literal objects
+
+var John = {
+    firstName: 'John',
+    lastName: 'Smith',
+    job: 'driver',
+    BirthYear: 1999
+};
+
+console.log(John);
+
+John.firstName = 'Jan';
+John['lastName'] = 'Hnoj';
+
+console.log(John);
+console.log(John.firstName);
+
+// new object syntax
+
+var Jane = new Object();
+Jane.firsName = 'Jane';
+Jane.lastName = 'Koth';
+
+console.log(Jane);
