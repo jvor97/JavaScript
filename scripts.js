@@ -268,3 +268,38 @@ var John = {
 
 John.calcAge();
 console.log(John);
+
+
+//Chalange 4
+
+var Mark = {
+    firstName: 'Mark',
+    mass : 78,
+    height : 1.69,
+    calcBMI: function() {
+        this.BMI = this.mass / (this.height * this.height);
+        return this.BMI;
+    }
+}
+
+var John = {
+    firstName: 'John',
+    mass : 110,
+    height : 1.95,
+    calcBMI: function() {
+        this.BMI = this.mass / (this.height * this.height);
+        return this.BMI;
+     }
+}
+
+Mark.calcBMI();
+John.calcBMI();
+
+ if (Mark.BMI > John.BMI) {
+   console.log( Mark.firstName + ' has higher BMI, which is equal to ' + Mark.BMI);
+} else if ( John.BMI > Mark.BMI) {
+    console.log( John.firstName + ' has higher BMI, which is equal to ' + John.BMI);
+} else {
+    console.log( Mark.firstName + ' and ' + John.firstName + ' have the same BMI, which is equal to ' + John.BMI);
+}
+
