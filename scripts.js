@@ -253,3 +253,18 @@ Jane.firsName = 'Jane';
 Jane.lastName = 'Koth';
 
 console.log(Jane);
+
+//Methods
+
+var John = {
+    firstName: 'John',
+    lastName: 'Smith',
+    job: 'driver',
+    BirthYear: 1999,
+    calcAge: function() {
+        this.age = 2018 - this.BirthYear;
+    }
+};
+
+John.calcAge();
+console.log(John);
