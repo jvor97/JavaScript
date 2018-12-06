@@ -202,7 +202,7 @@ var finalPaid = [124 + calculateTip(124), 48 + calculateTip(48), 268 + calculate
 console.log(tip);
 console.log(finalPaid);
 */
-
+/*
 function calculateTip(bill) {
     var percentage;
     if (bill < 50) {
@@ -302,4 +302,48 @@ John.calcBMI();
 } else {
     console.log( Mark.firstName + ' and ' + John.firstName + ' have the same BMI, which is equal to ' + John.BMI);
 }
+
+//Loops and Interation 
+
+//for loop
+
+//na vyhodenie čísiel od 0 do 9
+for ( var i = 0; i < 10; i++) {
+    console.log(i);
+}
+
+//na vyhodenie všetkých dát z array
+var John = ['John', 'Smith', 1988, 'driver'];
+
+for (var i = 0; i < John.length; i++) {
+    console.log(John[i]); 
+}
+
+// while loop 
+
+var i = 0;
+while(i < John.length) {
+    console.log(John[i]);
+    i ++
+}
+
+//continue and break
+// ked chceš vybrať iba strings a ak to nie je string tak bude pokračovať na dalšie dáta, kt sú strings
+for (var i = 0; i < John.length; i++) {
+    if (typeof John[i] !== 'string') continue;
+    console.log(John[i]);
+}
+
+for ( var i = 0; i < John.length; i++) {
+    if (typeof John[i] !== 'string') break;
+    console.log(John[i]);
+}
+*/
+
+// Looping backwards
+var John = ['John', 'Smith', 1988, 'driver'];
+for( var i = 3; i >= 0; i--) {
+    console.log(John[i]);
+}  //var i = 3 by si mala napísať var i = John.length - 1 --> to je označenie posledného elementu v array
+
 
