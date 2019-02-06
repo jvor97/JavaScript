@@ -108,7 +108,7 @@ switch (true) {
     console.log( firstName + ' is a man');
 }
 
-// Challange 2
+// Challenge 2
 
 var avarJohn, avarMike, avarMary;
 avarJohn = (84 + 120 + 103) / 3;
@@ -183,7 +183,7 @@ console.log(whatDoYouDo('Marek', 'waiter'));
 
 
 
-//Challange 3
+//Challenge 3
 /*
 function calculateTip(bill) {
     if (bill < 50) {
@@ -272,7 +272,7 @@ John.calcAge();
 console.log(John);
 
 
-//Chalange 4
+//Challenge 4
 
 var Mark = {
     firstName: 'Mark',
