@@ -131,8 +131,10 @@ switch (true) {
     case ( avarJohn > avarMike ) :
     console.log( 'John is the winner with total score of ' + avarJohn);
     break;
-    default :
+    case ( avarMike > avarJohn ) :
     console.log( 'Mike is the winner with total score of ' + avarMike);
+    default :
+    console.log( 'It´s a draw');
 }
 
 console.log( avarJohn, avarMike, avarMary); 
@@ -347,3 +349,32 @@ for( var i = 3; i >= 0; i--) {
 }  //var i = 3 by si mala napísať var i = John.length - 1 --> to je označenie posledného elementu v array
 
 
+// Challenge 5
+
+var John = {
+    firstName: 'John',
+    lastName: 'Smith',
+    bills: [124, 48, 268, 180, 42],
+    calcTip: function() {
+         this.tips = [];
+         this.finalValue = [];
+        
+        for ( var i = 0; i < this.bills.length; i++) {
+            var percentage;
+            var bill = this.bills[i];
+            if(bill < 50) {
+                percentage = 0.2;
+            } else if (bill >= 50 && bill < 200) {
+                percentage = 0.15;
+            } else {
+                percentage = .1;
+            }
+
+            this.tips[i] = bill * percentage;
+            this.finalValue[i] = bill + this.tips[i];
+        }
+    }
+}
+
+John.calcTip();
+console.log(John);
