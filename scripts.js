@@ -382,7 +382,7 @@ console.log(John);
 var Mark = {
     firstName: 'Mark',
     lastName: 'Perk',
-    bills: [77, 375,110,45],
+    bills: [77, 475,110,45],
     calcTip: function() {
         this.tips = [];
         this.finalValue = [];
@@ -419,18 +419,18 @@ function averageTip(tips){
         sum = sum + tips[i];
     }
 
-    average = sum / tips.length;
+    var average = sum / tips.length;
 
     return average;
 }
 
-var tips = Mark.tips;
-var averageMark = averageTip(tips);
-console.log(average);
 
-var tips = John.tips;
-var averageJohn = averageTip(tips);
-console.log(average);
+var averageMark = averageTip(Mark.tips);
+console.log(averageMark);
+
+
+var averageJohn = averageTip(John.tips);
+console.log(averageJohn);
 
 if (averageMark > averageJohn){
     console.log( 'Mark´s family gave in average more tips than John´s family. They gave ' + averageMark + ' € in average.')
@@ -455,3 +455,146 @@ function maxTip(tips) {
 var tips = Mark.tips;
 var max = maxTip(tips);
 console.log(max);   
+
+
+//Challenge 1
+
+var Mark = {
+    mass: 75,
+    height: 1.8,
+};
+var John = {
+    mass: 90,
+    height: 1.92,
+};
+
+function CalcBMI(mass, height) {
+    return(mass / height^2);
+}
+console.log(CalcBMI(75, 1.8));
+console.log(CalcBMI(90, 1.92));
+
+//Challenge 2
+
+var John = {
+    score: [89, 120, 103],
+}
+var Mike = {
+    score: [116,94,123],
+}
+var Mary = {
+    score: [97,134,105],
+}
+
+function calcScore(score){
+    var sum = 0;
+
+    for (i = 0; i < score.length; i++) {
+        sum = sum + score[i];
+    }
+
+    var average = sum / score.length;
+
+    return average;
+}
+
+
+var averageJohn = calcScore(John.score);
+console.log(averageJohn);
+
+var averageMike = calcScore(Mike.score);
+console.log(averageMike);
+
+var averageMary = calcScore(Mary.score);
+console.log(averageMary);
+
+
+if (averageJohn > averageMike && averageJohn > averageMary){
+    console.log('John is the winner with average score of ' + averageJohn)
+}else{
+    console.log('oiio')
+}
+
+
+//Challenge 3
+
+var JohnBills = [124,48,368];
+
+function calcTip(bill) {
+    
+    var tips = [];
+    var percentage = 0;
+
+    for(i = 0; i < bill.length; i++){
+      var onebill = bill[i];
+        if (onebill < 50){
+            percentage = 0.2;
+        } else if (onebill >= 50 && onebill < 200){
+            percentage = 0.15;
+        } else {
+            percentage = 0.1;
+        }
+        var tip = percentage * bill[i];
+        tips[i] = tip;
+    }
+    return tips;
+}
+
+var Johntips = calcTip(JohnBills);
+console.log(Johntips);
+
+
+function calcFinalValue(bill) {
+    
+    var finalvalues = [];
+    var percentage = 0;
+
+    for(i = 0; i < bill.length; i++){
+      var onebill = bill[i];
+        if (onebill < 50){
+            percentage = 0.2;
+        } else if (onebill >= 50 && onebill < 200){
+            percentage = 0.15;
+        } else {
+            percentage = 0.1;
+        }
+        var finalvalue = percentage * bill[i] + bill[i];
+        finalvalues[i] = finalvalue;
+    }
+    return finalvalues;
+}
+
+var JohnFinalValues = calcFinalValue(JohnBills);
+console.log(JohnFinalValues);
+
+
+//Challenge 4
+
+var John = {
+    fullName: 'John Smith',
+    mass: 90,
+    height: 1.92,
+    calcBMI: function(){
+        this.BMI = this.mass / (this.height * this.height);
+    }
+}
+var Mark = {
+    fullName: 'Mark Clember',
+    mass: 75,
+    height: 1.8,
+    calcBMI: function(){
+        this.BMI = this.mass / (this.height * this.height);
+    }
+}
+
+John.calcBMI();
+Mark.calcBMI();
+
+if (John.BMI > Mark.BMI){
+    console.log(John.fullName + ' has a higher BMI equal to ' + John.BMI);
+} else if (Mark.BMI > John-BMI){
+    console.log(Mark.fullName + ' has a higher BMI equal to ' + Mark.BMI);
+} else {
+    console.log('There is a draw.')
+}
+
