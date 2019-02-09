@@ -696,3 +696,7 @@ function calcMaxTip(tips) {
 
 JohnMaxTip = calcMaxTip(John.tips);
 console.log(JohnMaxTip);
+
+// Challenge 6
+// Create a function which will take three numbers as input and returns the biggest one.
+// For example: function biggestOfThree(2,5,4); returns 5
