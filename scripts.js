@@ -696,4 +696,3 @@ function calcMaxTip(tips) {
 
 JohnMaxTip = calcMaxTip(John.tips);
 console.log(JohnMaxTip);
-}
