@@ -690,8 +690,10 @@ function calcMaxTip(tips) {
             max = tip;
         }
     }
+
     return max;
 }
 
 JohnMaxTip = calcMaxTip(John.tips);
 console.log(JohnMaxTip);
+}
