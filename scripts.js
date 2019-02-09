@@ -598,3 +598,30 @@ if (John.BMI > Mark.BMI){
     console.log('There is a draw.')
 }
 
+
+// Challenge 5
+
+var John = {
+    fullName: 'John Smith',
+    bills: [124,48,268,180,42],
+    calcTip: function() {
+        var tips = [];
+        var finalvalues = [];
+
+        for (i = 0; i < bills.length; i++) {
+            var percentage = 0;
+
+            var bill = this.bills[i];
+
+            if (bill < 50) {
+                percentage = 0.2;
+            } else if (bill >= 50 && bill < 200) {
+                percentage = 0.15;
+            } else{
+                percentage = 0.1;
+            }
+            
+            this.tips = 
+        }
+    }
+}
