@@ -1,4 +1,4 @@
-/** 
+/**
 var firstName = 'Julia';
 
 console.log(firstName);
@@ -36,7 +36,7 @@ console.log(firstName + ' ' + lastName);
 
 */
 
-/** 
+/**
 //Challange
 
 var heightMark, heightJohn, massMark, massJohn;
@@ -137,7 +137,7 @@ switch (true) {
     console.log( 'It´s a draw');
 }
 
-console.log( avarJohn, avarMike, avarMary); 
+console.log( avarJohn, avarMike, avarMary);
 
 //Functions
 
@@ -358,7 +358,7 @@ var John = {
     calcTip: function() {
          this.tips = [];
          this.finalValue = [];
-        
+
         for ( var i = 0; i < this.bills.length; i++) {
             var percentage;
             var bill = this.bills[i];
@@ -403,7 +403,7 @@ var Mark = {
             this.tips[i] = bill * percentage;
             this.finalValue[i] = bill + this.tips[i];
         }
-    }   
+    }
 }
 
 
@@ -435,26 +435,26 @@ console.log(averageJohn);
 if (averageMark > averageJohn){
     console.log( 'Mark´s family gave in average more tips than John´s family. They gave ' + averageMark + ' € in average.')
 } else {
-    console.log( 'John´s family gave in average more tips than Mark´s family. They gave ' + averageJohn + ' € in average.') 
+    console.log( 'John´s family gave in average more tips than Mark´s family. They gave ' + averageJohn + ' € in average.')
 }
 
 //Maxtip
 
 var tips = Mark.tips;
-function maxTip(tips) { 
+function maxTip(tips) {
     var max = tips[0];
-    
+
     for (var i = 0; i < tips.length; i++) {
         if ( max < tips[i]) {
           max = tips[i];
         }
     }
-    return max;  
+    return max;
 }
 
 var tips = Mark.tips;
 var max = maxTip(tips);
-console.log(max);   
+console.log(max);
 
 
 //Challenge 1
@@ -521,7 +521,7 @@ if (averageJohn > averageMike && averageJohn > averageMary){
 var JohnBills = [124,48,368];
 
 function calcTip(bill) {
-    
+
     var tips = [];
     var percentage = 0;
 
@@ -545,7 +545,7 @@ console.log(Johntips);
 
 
 function calcFinalValue(bill) {
-    
+
     var finalvalues = [];
     var percentage = 0;
 
@@ -610,7 +610,7 @@ var John = {
         this.finalValues = [];
 
         for (i = 0; i < this.bills.length; i++) {
-           
+
             var percentage = 0;
             var bill = this.bills[i];
 
@@ -621,7 +621,7 @@ var John = {
             } else{
                 percentage = 0.1;
             }
-            
+
             this.tips[i] = bill * percentage;
             this.finalValues[i] = bill * percentage + bill;
         }
@@ -647,7 +647,7 @@ var Mark = {
             } else{
                 percentage = 0.25;
             }
-            
+
             this.tips[i] = bill * percentage;
             this.finalValues[i] = bill * percentage + bill;
         }
@@ -662,7 +662,7 @@ console.log(Mark);
 
 // Averages of Johns&Marks tips
 function CalcAverageTip(tips) {
-    
+
     var sum = 0;
     for (i = 0; i < tips.length; i++) {
         sum = sum + tips[i];
@@ -681,7 +681,7 @@ console.log(MarkAverageTip);
 
 // Max of John tips
 function calcMaxTip(tips) {
-   
+
     var max = 0;
     for(i= 0; i < tips.length; i++) {
 
@@ -704,18 +704,37 @@ console.log(JohnMaxTip);
 
 function biggestOfThree(one, two, three) {
 
-    var max = one;
-        if (one > two && one > three) {
-            max = one;
-        } else if ( two > one && two > three) {
-            max = two;
-        } else {
-            max = three;
-        }
-        
+    let max = one;
+
+    if (one > two && one > three) {
+        max = one;
+    } else if ( two > one && two > three) {
+        max = two;
+    } else {
+        max = three;
+    }
+
     return max;
-    
+}
+
+function biggestOfThree2(one, two, three){
+
+    if (one > two){
+        if (one > three)
+            return one;
+        else{
+            return three;
+        }
+    } else{
+        if (two > three){
+            return two;
+        }
+        else{
+            return three;
+        }
+    }
 }
 
 var number = biggestOfThree(1,2,3);
+var test = biggestOfThree2(2,5,8);
 console.log(number);
