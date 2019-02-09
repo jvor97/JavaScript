@@ -601,16 +601,17 @@ if (John.BMI > Mark.BMI){
 
 // Challenge 5
 
+//Calculation of Johns&MArks tips and final values
 var John = {
     fullName: 'John Smith',
     bills: [124,48,268,180,42],
     calcTip: function() {
-        var tips = [];
-        var finalvalues = [];
+        this.tips = [];
+        this.finalValues = [];
 
-        for (i = 0; i < bills.length; i++) {
+        for (i = 0; i < this.bills.length; i++) {
+           
             var percentage = 0;
-
             var bill = this.bills[i];
 
             if (bill < 50) {
@@ -621,7 +622,76 @@ var John = {
                 percentage = 0.1;
             }
             
-            this.tips = 
+            this.tips[i] = bill * percentage;
+            this.finalValues[i] = bill * percentage + bill;
         }
     }
 }
+
+var Mark = {
+    fullName: 'Mark Johnson',
+    bills: [77,375,110,45],
+    calcTip: function() {
+        this.tips = [];
+        this.finalValues = [];
+
+        for (i = 0; i < this.bills.length; i++) {
+
+            var percentage = 0;
+            var bill = this.bills[i];
+
+            if (bill < 100) {
+                percentage = 0.2;
+            } else if (bill >= 100 && bill < 300) {
+                percentage = 0.1;
+            } else{
+                percentage = 0.25;
+            }
+            
+            this.tips[i] = bill * percentage;
+            this.finalValues[i] = bill * percentage + bill;
+        }
+    }
+}
+
+John.calcTip();
+console.log(John);
+
+Mark.calcTip();
+console.log(Mark);
+
+// Averages of Johns&Marks tips
+function CalcAverageTip(tips) {
+    
+    var sum = 0;
+    for (i = 0; i < tips.length; i++) {
+        sum = sum + tips[i];
+    }
+
+    const average = sum / tips.length;
+    return average;
+}
+
+var JohnAverageTip = CalcAverageTip(John.tips);
+console.log(JohnAverageTip);
+
+var MarkAverageTip = CalcAverageTip(Mark.tips);
+console.log(MarkAverageTip);
+
+
+// Max of John tips
+function calcMaxTip(tips) {
+   
+    var max = 0;
+    for(i= 0; i < tips.length; i++) {
+
+        var tip = tips[i];
+        if (max < tip) {
+            max = tip;
+        }
+    }
+    return max;
+}
+
+JohnMaxTip = calcMaxTip(John.tips);
+console.log(JohnMaxTip);
