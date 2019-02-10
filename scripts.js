@@ -739,3 +739,9 @@ function biggestOfThree2(one, two, three){
 var number = biggestOfThree(1,2,3);
 var test = biggestOfThree2(2,5,8);
 console.log(number);
+
+// Challenge SumOfPositive numbers.
+// You get an array of numbers and your task is to sum all positive numbers.
+// If the input array is empty return 0.
+// For example: [1,3,-5,-2,2] => sum 1 + 3 + 2 = 6
+//              [] return 0
