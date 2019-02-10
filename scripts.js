@@ -745,3 +745,29 @@ console.log(number);
 // If the input array is empty return 0.
 // For example: [1,3,-5,-2,2] => sum 1 + 3 + 2 = 6
 //              [] return 0
+
+
+
+function SumOfPositive(numbers){
+
+    let sum = 0;
+    
+    for (i = 0; i < numbers.length; i++) {
+
+        var number = numbers[i];
+
+        if (number > 0) {
+            sum = sum + number;
+        }
+        
+    }
+    return sum;
+}
+
+var numbers1 = [1,3,-5,-2,2];
+var sum = SumOfPositive(numbers1);
+console.log(sum);
+
+var numbers2 = [-1,-3,-5,-2,-2];
+var sum = SumOfPositive(numbers2);
+console.log(sum);
