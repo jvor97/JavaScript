@@ -717,6 +717,7 @@ function biggestOfThree(one, two, three) {
     return max;
 }
 
+// More complicated way of Josephe :))
 function biggestOfThree2(one, two, three){
 
     if (one > two){
