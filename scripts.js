@@ -746,8 +746,6 @@ console.log(number);
 // For example: [1,3,-5,-2,2] => sum 1 + 3 + 2 = 6
 //              [] return 0
 
-
-
 function SumOfPositive(numbers){
 
     let sum = 0;
@@ -765,9 +763,16 @@ function SumOfPositive(numbers){
 }
 
 var numbers1 = [1,3,-5,-2,2];
-var sum = SumOfPositive(numbers1);
-console.log(sum);
-
 var numbers2 = [-1,-3,-5,-2,-2];
-var sum = SumOfPositive(numbers2);
+
+var sum = SumOfPositive(numbers1);
+var sum2 = SumOfPositive(numbers2);
+
 console.log(sum);
+console.log(sum2);
+
+// Challenge reverse strings.
+// You get an array of strings and your task is to reverse this strings and write it from the end to the beginning.
+// If the input array is empty return 0.
+// For example: ["one","two", "three", "four"] => four, three, two, one
+//              [] return 0
