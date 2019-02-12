@@ -758,8 +758,7 @@ function SumOfPositive(numbers){
 
         if (number > 0) {
             sum = sum + number;
-        }
-        
+        } 
     }
     return sum;
 }
