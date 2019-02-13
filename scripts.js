@@ -60,7 +60,7 @@ console.log('Is Marks BMI higher than Johns ?' + MarkHigherBMI);
 
 //Boolean logic
 
-var firstName, age;
+/*var firstName, age;
 firstName = 'John';
 age = 21;
 
@@ -184,7 +184,7 @@ console.log(whatDoYouDo('Marek', 'waiter'));
 
 
 //Challenge 3
-/*
+/!*
 function calculateTip(bill) {
     if (bill < 50) {
         return firstName + ' leaved ' + bill * 0.2 + ' tip from the ' + bill;
@@ -203,8 +203,8 @@ var finalPaid = [124 + calculateTip(124), 48 + calculateTip(48), 268 + calculate
 
 console.log(tip);
 console.log(finalPaid);
-*/
-/*
+*!/
+/!*
 function calculateTip(bill) {
     var percentage;
     if (bill < 50) {
@@ -781,16 +781,37 @@ console.log(sum2);
 function reverseWordString(string) {
  
       var emptystring = 0;
-            if (string === "") {
-                console.log(emptystring);
-            } else {
-             for (var i = string.length - 1; i >= 0; i--){
-               console.log(string[i]);
-             }
+
+      if (string === "") {
+            console.log(emptystring);
+      } else {
+          for (var i = string.length - 1; i >= 0; i--){
+           console.log(string[i]);
+         }
     }
 }
-var string = ["one","two", "three", "four"];
-var reverseString = reverseWordString(string);
+var words = ["one","two", "three", "four"];
+var reverseString = reverseWordString(words);
+
+function reverseWordStringRefactored(words){
+
+    let reversedWords = [];
+
+    if (words === undefined || words === "" || words.length === 0) {
+        return reversedWords;
+    }
+
+    let reversedIndex = 0;
+
+    for (let i = words.length - 1; i >= 0; i--) {
+       reversedWords[reversedIndex] = words[i];
+       reversedIndex = reversedIndex + 1;
+    }
+
+    return reversedWords;
+}
+
+var reverseWordsRefactored = reverseWordStringRefactored(words);
 
 /* function reverseString(string) {
  
@@ -807,6 +828,7 @@ var reverseString = reverseWordString(string);
 
 
 //Prehodí poradie PISMEN v slove od posledného k prvému
+//To je vporiadku ale skus to bez pomocnych funkcii, for cyklom.
 function reverseLetterString(str) {
     return str.split("").reverse().join("");
 }
