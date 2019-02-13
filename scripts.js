@@ -770,8 +770,47 @@ var sum2 = SumOfPositive(numbers2);
 console.log(sum);
 console.log(sum2);
 
+
 // Challenge reverse strings.
 // You get an array of strings and your task is to reverse this strings and write it from the end to the beginning.
 // If the input array is empty return 0.
 // For example: ["one","two", "three", "four"] => four, three, two, one
 //              [] return 0
+
+// Prehodí poradie slov v stringu od posledného k prvému
+function reverseWordString(string) {
+ 
+      var emptystring = 0;
+            if (string === "") {
+                console.log(emptystring);
+            } else {
+             for (var i = string.length - 1; i >= 0; i--){
+               console.log(string[i]);
+             }
+    }
+}
+var string = ["one","two", "three", "four"];
+var reverseString = reverseWordString(string);
+
+/* function reverseString(string) {
+ 
+    var reverse = 0;
+          if (string === "") {
+              reverse = 0;
+          } else {
+           for (var i = string.length - 1; i >= 0; i--){
+             reverse = string[i];
+           }
+  return reverse;
+  }
+} */ //Ked to dam takto tak mi to vyhadzuje iba poslednu hodnotu z for (one) nie celý string od 4 do 1
+
+
+//Prehodí poradie PISMEN v slove od posledného k prvému
+function reverseLetterString(str) {
+    return str.split("").reverse().join("");
+}
+
+var str = "one";
+var reverse = reverseLetterString(str);
+console.log(reverse);
