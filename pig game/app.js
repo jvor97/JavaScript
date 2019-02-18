@@ -39,18 +39,42 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
         roundScore += dice;
         document.querySelector('#current-' + activePlayer).textContent = roundScore;
     }else {
-        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
-        roundScore = 0;
-        
-        document.querySelector('#current-0').textContent = roundScore;
-        document.querySelector('#current-1').textContent = roundScore;
-
-        diceDOM.style.display = 'none';
-
-        document.querySelector('.player-0-panel').classList.toggle('active');
-        document.querySelector('.player-1-panel').classList.toggle('active');
+        NextPlayer();
     }
 })
+
+document.querySelector('.btn-hold').addEventListener('click', function(){
+    //Add current score to gobal score
+    scores[activePlayer] += roundScore;
+    document.getElementById('score-' + activePlayer).textContent = scores[activePlayer];
+
+    //Check if player won
+    if (scores[activePlayer] >= 20) {
+        document.querySelector('#name-' + activePlayer).textContent = 'Winner !';
+        document.querySelector('.player-' + activePlayer +'-panel').classList.add('winner');
+        document.querySelector('.player-' + activePlayer +'-panel').classList.remove('active');
+        document.querySelector('.dice').style.display = 'none';
+    } else {
+    NextPlayer();
+    }
+})
+
+
+function NextPlayer() {
+    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+    roundScore = 0;
+    
+    document.querySelector('#current-0').textContent = roundScore;
+    document.querySelector('#current-1').textContent = roundScore;
+
+
+    document.querySelector('.player-0-panel').classList.toggle('active');
+    document.querySelector('.player-1-panel').classList.toggle('active');
+
+    document.querySelector('.dice').style.display = 'none';
+}
+
+
 
 /*
 document.querySelector('#current-' + activePlayer).textContent = dice;  // --> setter
