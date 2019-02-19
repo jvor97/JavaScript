@@ -227,3 +227,26 @@ for( var i = 3; i >= 0; i--) {
 
 //Challenge 5 FOR method, max tip, average tip
 
+/*
+var items = [1,3,4,3,5,4]
+  , result = []
+  , i
+  , k
+  , container = {};
+
+for (i = 0; i < items.length; ++i) {
+  if (items[i] in container) {
+    container[items[i]]++;  //nechapem tomuto zapisu.lebo toto teoreticky hovori ze napr. container[3]--> a  to nie je čislo 3 v cont. ale tretia pozicia lebo [], 
+  } else {
+    container[items[i]] = 1;
+  }
+}
+for (k in container) {
+  if (container[k] == 1) {
+    result.push(k);
+  }
+}
+console.log(result)  */
+
+
+  

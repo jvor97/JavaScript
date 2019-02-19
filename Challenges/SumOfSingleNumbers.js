@@ -4,5 +4,6 @@
 
 // Hint: use dictionary
 
-let array = [1,3,4,3,5,4];
+//let array = [1,3,4,3,5,4];
+
 
