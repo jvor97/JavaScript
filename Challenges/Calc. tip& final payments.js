@@ -96,3 +96,5 @@ function calcFinalValue(bill) {
 
 var JohnFinalValues = calcFinalValue(JohnBills);
 console.log(JohnFinalValues);
+
+
