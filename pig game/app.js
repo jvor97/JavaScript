@@ -9,8 +9,13 @@ GAME RULES:
 
 */
 
+/*
+Challenge 1: if there is twice 6 in a row, the player loose his entire score
+Challenge 2: possibility to set  winning score 
+Challenge 3: 2 dices */
 
-var scores, roundScore, activePlayer, gamePlaying;
+
+var scores, roundScore, activePlayer, gamePlaying, inputWinScore;
 
 init();
 
@@ -53,16 +58,25 @@ document.querySelector('.btn-hold').addEventListener('click', function () {
         document.getElementById('score-' + activePlayer).textContent = scores[activePlayer];
 
         //Check if player won
-        if (scores[activePlayer] >= 15) {
-            document.querySelector('#name-' + activePlayer).textContent = 'Winner !';
-            document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
-            document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
-            document.querySelector('.dice').style.display = 'none';
-            gamePlaying = false;
+        var inputWinScore = document.getElementById('input-win-score').value;  //číta value, kt. zadali
+        var winScore = 0;
+
+        if(inputWinScore) {
+            winScore = inputWinScore;
+        }else {
+            winScore = 20;
+        }   //ak je inputWinScore true (čo je ked je tam nejaka hodnota zadana) tak.. a ked tam nie je tak je to false- !!! pretože program vzdy vyhodi ked je tam null/0/""/undefined ze je to false !!!!
+
+        if (scores[activePlayer] >= winScore) {
+                document.querySelector('#name-' + activePlayer).textContent = 'Winner !';
+                document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
+                document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+                document.querySelector('.dice').style.display = 'none';
+                gamePlaying = false;
         } else {
-            NextPlayer();
-        }
-    }
+                NextPlayer();
+            }
+        }  
 });
 
 
@@ -100,9 +114,9 @@ function init() {
 
     document.querySelector('.player-0-panel').classList.remove('winner');
     document.querySelector('.player-1-panel').classList.remove('winner');
-    document.querySelector('.player-0-panel').classList.remove('active');
+    document.querySelector('.player-0-panel').classList.remove('active');    //keby si nedala remove active a iba add active tak sa može stať, že bol active a znova sa mu prida active (bude mať 2x active čo neches)
     document.querySelector('.player-1-panel').classList.remove('active');
-    document.querySelector('.player-0-panel').classList.add('active');
+    document.querySelector('.player-0-panel').classList.add('active'); 
 };
 
 
