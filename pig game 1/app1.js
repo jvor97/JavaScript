@@ -11,48 +11,68 @@ GAME RULES:
 
 /*
 Challenge 1: if there is twice 6 in a row, the player loose his entire score
-Challenge 2: possibility to set  winning score    *doplnok: ked dam new game tak to score v boxe tam zostava, chcem aby to bolo ako na zaciatku
-Challenge 3: 2 dices */
+Challenge 2: possibility to set  winning score    *UPGRADE: when clicking on new game, the inputed score from previous game dissapears
+Challenge 3: 2 dices    *UPGRADE: still having the previous challenge- two 6 in a row */     
 
-/* UPGRADE
-- AERT START GAME začať s pozadím jednotným- ani jeden nebude mať active a až ptm keď klikneš na alert start game tak naskoči
+/* THINK ABOUT UPGRADE
+- AERT START GAME začať s pozadím jednotným- ani jeden nebude mať active a až ptm keď klikneš na alert start game tak naskoči + možno aby si mohli zadať vastné mena
+-nastaviť si win score iba na začiatku hry
+*/
+
+/*QUESTIONS
+1-prečo nefunguje zmena stylu pre vsetkych clenov class naraz? ale musim to robit po jednom po ID.. napr. mam 2xdice, kt maju ale spoločnu class= dice. Chcem aby keď začínam hru všetke dice boli nevyditelne ´, tak prečo to nemozem urobit  :   
+document.querySelector('.dice').style.display = 'none';
+ ale musim to robit ako:    
+ document.getElementById('dice1').style.display = 'none';
+ document.getElementById('dice2').style.display = 'none';
 */
 
 var activePlayer, roundScore, score, gamePlaying;
 
 init();
 
-var previousdice = 0;
+var previousdice1 = 0;
+var previousdice2 = 0;
 
 document.querySelector('.btn-roll').addEventListener('click', function () {
 
     if (gamePlaying) {
 
         //Roll dice
-        var dice = Math.floor(Math.random() * 6) + 1;
+        var dice1 = Math.floor(Math.random() * 6) + 1;
+        var dice2 = Math.floor(Math.random() * 6) + 1;
 
         //Display dice
-        var diceDOM = document.querySelector('.dice');
+        var diceDOM = document.getElementById('dice1');
         diceDOM.style.display = 'block';
         diceDOM.style.opacity = 1;
-        diceDOM.src = 'dice-' + dice + '.png';
+        diceDOM.src = 'dice-' + dice1 + '.png';
+
+        var diceDOM = document.getElementById('dice2');
+        diceDOM.style.display = 'block';
+        diceDOM.style.opacity = 1;
+        diceDOM.src = 'dice-' + dice2 + '.png';
+        
 
         //Update and display score
-        if (dice === 6 && previousdice === 6) {
+        if ((dice1 === 6 || dice2 === 6) && (previousdice1 === 6 || previousdice2 === 6)) {
             score[activePlayer] = 0;
             document.getElementById('score-' + activePlayer).textContent = score[activePlayer];
             nextPlayer();
         } else {
-            if (dice !== 1) {
-                roundScore += dice;
+            if (dice1 !== 1 && dice2 !== 1) {
+                roundScore += dice1 + dice2;
                 document.getElementById('current-' + activePlayer).textContent = roundScore;
             } else {
                 nextPlayer();
             }
         }
-        previousdice = dice;
+        previousdice1 = dice1;
+        previousdice2 = dice2;
     }
 });
+
+
 
 document.querySelector('.btn-hold').addEventListener('click', function () {
     if (gamePlaying) {
@@ -62,11 +82,20 @@ document.querySelector('.btn-hold').addEventListener('click', function () {
         document.getElementById('score-' + activePlayer).textContent = score[activePlayer];
 
         //Check if player won
-        if (score[activePlayer] >= 100) {
+        var inputWinScore = document.querySelector('.win-input').value;
+        var winScore;
+        if (inputWinScore) {
+            winScore = inputWinScore;
+        } else {
+            winScore = 15;
+        }
+
+        if (score[activePlayer] >= winScore) {
             document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
             document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
             document.getElementById('name-' + activePlayer).textContent = 'Winner !';
-            document.querySelector('.dice').style.display = 'none';
+            document.getElementById('dice1').style.display = 'none';
+            document.getElementById('dice2').style.display = 'none';
             gamePlaying = false;
         } else {
             nextPlayer();
@@ -87,9 +116,10 @@ function init() {
     document.getElementById('score-0').textContent = 0;
     document.getElementById('score-1').textContent = 0;
     document.getElementById('current-0').textContent = 0;
-    document.getElementById('current-0').textContent = 0;
+    document.getElementById('current-1').textContent = 0;
 
-    document.querySelector('.dice').style.display = 'none';
+    document.getElementById('dice1').style.display = 'none';
+    document.getElementById('dice2').style.display = 'none';
 
     document.querySelector('.player-0-panel').classList.remove('active');
     document.querySelector('.player-1-panel').classList.remove('active');
@@ -98,6 +128,8 @@ function init() {
     document.querySelector('.player-0-panel').classList.add('active');
     document.getElementById('name-0').textContent = 'Player 1';
     document.getElementById('name-1').textContent = 'Player 2';
+
+    document.querySelector('.win-input').value = "";
 }
 
 function nextPlayer() {
@@ -106,7 +138,8 @@ function nextPlayer() {
 
     activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
 
-    document.querySelector('.dice').style.opacity = 0.5;
+    document.getElementById('dice1').style.opacity = 0.5;
+    document.getElementById('dice2').style.opacity = 0.5;
     document.querySelector('.player-0-panel').classList.toggle('active');
     document.querySelector('.player-1-panel').classList.toggle('active');
 }
