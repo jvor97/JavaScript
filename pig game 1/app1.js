@@ -9,6 +9,11 @@ GAME RULES:
 
 */
 
+/*
+Challenge 1: if there is twice 6 in a row, the player loose his entire score
+Challenge 2: possibility to set  winning score    *doplnok: ked dam new game tak to score v boxe tam zostava, chcem aby to bolo ako na zaciatku
+Challenge 3: 2 dices */
+
 /* UPGRADE
 - AERT START GAME začať s pozadím jednotným- ani jeden nebude mať active a až ptm keď klikneš na alert start game tak naskoči
 */
@@ -17,38 +22,47 @@ var activePlayer, roundScore, score, gamePlaying;
 
 init();
 
-document.querySelector('.btn-roll').addEventListener('click', function() {
-  if(gamePlaying){
+var previousdice = 0;
 
-    //Roll dice
-    var dice = Math.floor(Math.random()*6) + 1;
+document.querySelector('.btn-roll').addEventListener('click', function () {
 
-    //Display dice
-    var diceDOM = document.querySelector('.dice');
-    diceDOM.style.display = 'block';
-    diceDOM.style.opacity = 1;
-    diceDOM.src = 'dice-' + dice + '.png'; 
+    if (gamePlaying) {
 
-    //Update and display score
-    if (dice !== 1) {
-        roundScore += dice;
-        document.getElementById('current-' + activePlayer).textContent = roundScore;
-    } else {
-        nextPlayer();
+        //Roll dice
+        var dice = Math.floor(Math.random() * 6) + 1;
+
+        //Display dice
+        var diceDOM = document.querySelector('.dice');
+        diceDOM.style.display = 'block';
+        diceDOM.style.opacity = 1;
+        diceDOM.src = 'dice-' + dice + '.png';
+
+        //Update and display score
+        if (dice === 6 && previousdice === 6) {
+            score[activePlayer] = 0;
+            document.getElementById('score-' + activePlayer).textContent = score[activePlayer];
+            nextPlayer();
+        } else {
+            if (dice !== 1) {
+                roundScore += dice;
+                document.getElementById('current-' + activePlayer).textContent = roundScore;
+            } else {
+                nextPlayer();
+            }
+        }
+        previousdice = dice;
     }
-    
-    }   
 });
 
-document.querySelector('.btn-hold').addEventListener('click', function() {
-    if(gamePlaying) {
+document.querySelector('.btn-hold').addEventListener('click', function () {
+    if (gamePlaying) {
 
         //Add current score to global score
         score[activePlayer] += roundScore;
         document.getElementById('score-' + activePlayer).textContent = score[activePlayer];
 
         //Check if player won
-        if(score[activePlayer] >= 15) {
+        if (score[activePlayer] >= 100) {
             document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
             document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
             document.getElementById('name-' + activePlayer).textContent = 'Winner !';
@@ -60,7 +74,7 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
     }
 });
 
-document.querySelector('.btn-new').addEventListener('click', function() {
+document.querySelector('.btn-new').addEventListener('click', function () {
     init();
 });
 
@@ -68,7 +82,7 @@ function init() {
     activePlayer = 0;
     gamePlaying = true;
     roundScore = 0;
-    score = [0,0];
+    score = [0, 0];
 
     document.getElementById('score-0').textContent = 0;
     document.getElementById('score-1').textContent = 0;
@@ -81,7 +95,7 @@ function init() {
     document.querySelector('.player-1-panel').classList.remove('active');
     document.querySelector('.player-0-panel').classList.remove('winner');
     document.querySelector('.player-1-panel').classList.remove('winner');
-    document.querySelector('.player-0-panel').classList.add('active'); 
+    document.querySelector('.player-0-panel').classList.add('active');
     document.getElementById('name-0').textContent = 'Player 1';
     document.getElementById('name-1').textContent = 'Player 2';
 }
