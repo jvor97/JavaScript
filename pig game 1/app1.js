@@ -15,7 +15,7 @@ Challenge 2: possibility to set  winning score    *UPGRADE: when clicking on new
 Challenge 3: 2 dices    *UPGRADE: still having the previous challenge- two 6 in a row */     
 
 /* THINK ABOUT UPGRADE
-- AERT START GAME začať s pozadím jednotným- ani jeden nebude mať active a až ptm keď klikneš na alert start game tak naskoči + možno aby si mohli zadať vastné mena
+- AERT START GAME začať s pozadím jednotným- ani jeden nebude mať active a až ptm keď klikneš na alert start game tak naskoči + možno aby si mohli zadať vastné mena----> toto jedine s JQUERY 
 -nastaviť si win score iba na začiatku hry
 */
 
@@ -69,6 +69,7 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
         }
         previousdice1 = dice1;
         previousdice2 = dice2;
+        document.querySelector('.win-input').style.display = 'none';
     }
 });
 
@@ -113,6 +114,10 @@ function init() {
     roundScore = 0;
     score = [0, 0];
 
+window.confirm('Do you want to play PIG GAME ?');
+
+
+
     document.getElementById('score-0').textContent = 0;
     document.getElementById('score-1').textContent = 0;
     document.getElementById('current-0').textContent = 0;
@@ -129,6 +134,7 @@ function init() {
     document.getElementById('name-0').textContent = 'Player 1';
     document.getElementById('name-1').textContent = 'Player 2';
 
+    document.querySelector('.win-input').style.display = 'block';
     document.querySelector('.win-input').value = "";
 }
 
