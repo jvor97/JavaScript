@@ -38,12 +38,12 @@ var personProto = {
     }
 };
 
-var jane = object.create(personProto);
+var jane = Object.create(personProto);
 jane.name = 'Jane';
 jane.job = 'teacher';
 jane.yearOfBirth = 1989;
 
-var Fero = object.create(personProto, {
+var Fero = Object.create(personProto, {
     name: { value: 'Fero'},
     job: { value: 'driver'},
     yearOfBirth: { value: 1989}
