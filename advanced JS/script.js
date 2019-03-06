@@ -48,3 +48,43 @@ var Fero = Object.create(personProto, {
     job: { value: 'driver'},
     yearOfBirth: { value: 1989}
 });
+
+//Primitive vs objects
+//Primitive do a copy but objects just refears to a place/thing 
+//Primitive - ide to podla poradia, nemeni nalogovanie var, kt je zadane vyššie 
+
+var a = 4;
+var b = a;
+a = 56;
+
+console.log(a);
+console.log(b);
+
+//Objects - automaticky to zmeni hodnotu v celom programe
+var obj1 = {
+    age: 23,
+    city: 'Lisbon',
+}
+
+var obj2 = obj1;
+obj1.age = 20;
+
+console.log(obj1.age);
+console.log(obj2.age);
+
+//Functions - pomocou funk. možeš zmeniť iba objects a nie primitive
+var age = 38;
+var obj = {
+    name: 'Julia',
+    city: 'Bratislava',
+}
+
+function change(a,b) {
+    a = 10;
+    b.city = 'Vienna';
+}
+
+change(age,obj);
+
+console.log(age);  //vo funkcii nezmeniš var, kt je vonku lebo je to primitive
+console.log(obj.city)
