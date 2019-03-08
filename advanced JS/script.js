@@ -7,7 +7,7 @@ var john = {
 
 //Therefore you do this:
 
-//Function constructor
+//Function constructor-----------
 
 var Person = function(name, job, yearOfBirth) {
     this.name = name;
@@ -50,7 +50,7 @@ var Fero = Object.create(personProto, {
 });
 
 
-//Primitive vs objects
+//Primitive vs objects------------
 //Primitive do a copy but objects just refears to a place/thing 
 //Primitive - ide to podla poradia, nemeni nalogovanie var, kt je zadane vyššie 
 
@@ -92,7 +92,7 @@ console.log(obj.city)
 
 
 
-// Passing functions as arguments    CALL BACK Function
+// Passing functions as arguments    CALL BACK Function---------
 var years = [1990,1965, 1965, 1978];
 
 function arrayCalc(arr, fn) {
@@ -121,3 +121,27 @@ console.log(fullAge);
 var bor = calcAge(years[i]);
 console.log(bor); */ //nefunguje takto
 
+
+
+//Function returning function-----------
+function interviewQuestion(job) {
+    if(job === 'teacher'){
+    return function(name) {
+        console.log(name + ', what do you teach ?');
+    }
+ } else if (job === 'designer') {
+        return function(name) {
+            console.log(name + ', do you know what UX design is ?');
+        }
+    } else {
+        return function(name) {
+            console.log('What do you do ' + name + ' ?');
+        }
+    } 
+}
+
+var teacherQuestion = interviewQuestion('teacher');
+
+teacherQuestion('John');
+//OR
+interviewQuestion('designer')('Mark');
