@@ -145,3 +145,16 @@ var teacherQuestion = interviewQuestion('teacher');
 teacherQuestion('John');
 //OR
 interviewQuestion('designer')('Mark');
+
+
+//IIFE--------------
+
+(function() {
+    var score = Math.random() * 10;
+    console.log(score >= 5);
+})();
+
+(function(goodLuck) {
+    var score = Math.random() * 10;
+    console.log(score >= 5 - goodLuck);
+})(5);
