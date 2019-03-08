@@ -7,6 +7,39 @@
 
 // Prehodí poradie slov v stringu od posledného k prvému- SPRÁVNE RIEŠENIE
 
+
+function reverse(array) {
+
+    let reverseArray = [];
+    if (array === 0 || array === null || array === "") {
+        return reverseArray;
+    }  
+
+    arrayIndex = 0;
+    for (i = array.length; i >= 0; i--) {
+        reverseArray[arrayIndex] = array[i];
+        arrayIndex += 1;    
+    }
+
+    return reverseArray;
+}
+
+array = ["one","two", "three", "four"];
+var returnA = reverse(array);
+console.log(returnA);    
+
+function rev(words) {
+
+    var res = [];
+    for(i = words.length - 1; i >= 0; i--){
+        res.push(words[i]);
+    }
+    return res;
+}
+
+var ll = rev(words);
+console.log(ll);  
+
 function reverseWordStringRefactored(words){
 
     let reversedWords = [];

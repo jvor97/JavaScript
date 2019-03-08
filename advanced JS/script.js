@@ -49,6 +49,7 @@ var Fero = Object.create(personProto, {
     yearOfBirth: { value: 1989}
 });
 
+
 //Primitive vs objects
 //Primitive do a copy but objects just refears to a place/thing 
 //Primitive - ide to podla poradia, nemeni nalogovanie var, kt je zadane vyššie 
@@ -88,3 +89,35 @@ change(age,obj);
 
 console.log(age);  //vo funkcii nezmeniš var, kt je vonku lebo je to primitive
 console.log(obj.city)
+
+
+
+// Passing functions as arguments    CALL BACK Function
+var years = [1990,1965, 1965, 1978];
+
+function arrayCalc(arr, fn) {
+    var arrRes = [];
+    for(i = 0; i < arr.length; i++) {
+        arrRes.push(fn(arr[i]));
+    }
+    return arrRes;
+}
+
+function calcAge(el) {
+    return 2019 - el;
+}
+
+function fullAge(age) {
+    return age >= 18;
+}
+
+var age = arrayCalc(years, calcAge);
+var fullAge = arrayCalc(age,fullAge);
+
+console.log(age);
+console.log(fullAge);
+
+/*
+var bor = calcAge(years[i]);
+console.log(bor); */ //nefunguje takto
+

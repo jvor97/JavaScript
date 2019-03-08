@@ -229,4 +229,23 @@ for( var i = 3; i >= 0; i--) {
 
 
 
-  
+function reverse(array) {
+
+    let reverseArray = [];
+    if (array === 0 || array === null || array === "") {
+        reverseArray = 0;
+    } else {
+        arrayIndex = 0;
+        for (i = 0; i < array.length; i--) {
+            rverseArray = array[arrayIndex];
+        
+        arrayIndex += 1;    
+        }
+    }
+    return reverseArray;
+
+}
+
+array = ["one","two", "three", "four"];
+var returnA = reverse(array);
+console.log(returnA);
