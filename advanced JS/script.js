@@ -93,7 +93,7 @@ console.log(obj.city)
 
 
 // Passing functions as arguments    CALL BACK Function---------
-var years = [1990,1965, 1965, 1978];
+/*var years = [1990,1965, 1965, 1978];
 
 function arrayCalc(arr, fn) {
     var arrRes = [];
@@ -116,7 +116,7 @@ var fullAge = arrayCalc(age,fullAge);
 
 console.log(age);
 console.log(fullAge);
-
+*/
 /*
 var bor = calcAge(years[i]);
 console.log(bor); */ //nefunguje takto
@@ -148,7 +148,6 @@ interviewQuestion('designer')('Mark');
 
 
 //IIFE--------------
-
 (function() {
     var score = Math.random() * 10;
     console.log(score >= 5);
@@ -158,3 +157,91 @@ interviewQuestion('designer')('Mark');
     var score = Math.random() * 10;
     console.log(score >= 5 - goodLuck);
 })(5);
+
+
+// Closures----------
+function retirement(retirementAge) {
+    var a = ' years until retirement';
+    return function(yearOfBirth) {
+        var agee = 2019 - yearOfBirth;
+        console.log((retirementAge - agee) + a);
+    }
+}
+
+retirement(65)(1997);
+
+function interviewQues(job) {
+    var des = ', can you please expain what UX design is ?';
+    var teach = ', what do you teach ? ';
+    var other = ', what do you do ?'
+    return function(name) {
+        if(job === 'designer') {
+        console.log(name + des);
+        } else if (job === 'teacher') {
+            console.log(name + teach);
+        } else {
+            console.log(name + other)
+        }
+    }
+}
+
+interviewQues('designer')('John');
+interviewQues('teacher')('Mark');
+
+
+//bind, call and apply-----------
+var john = {
+    name: 'John',
+    age: 28,
+    job: 'teacher',
+    presentation: function(style, timeOfDay) {
+        if (style === 'formal') {
+            console.log('Good ' + timeOfDay + ', Ladies and gantlemen! I\'m ' + this.name + ' I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old.');
+        } else if (style === 'friendly') {
+            console.log('Hey! What\'s up ? I\'m ' + this.name + ' I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old. Have a nice ' + timeOfDay + '.');
+        }
+    }
+};
+
+
+var emily = {
+    name: 'Emily',
+    age: 20,
+    job: 'designer'
+};
+
+john.presentation('formal', 'morning');
+john.presentation.call(emily, 'friendly', 'afternoon');  //call- zavolaš funkciu z ineho objektu
+
+// john.presentation.apply(emily, ['friendly', 'morning']); //apply- to iste,ale plati na array- cize v tomto example by to nefungovalo
+
+var johnFormal = john.presentation.bind(john, 'formal'); //bind- na prdnadstavanie argumentu
+var emilyFriendly = john.presentation.bind(emily, 'friendly');
+
+johnFormal('morning');
+emilyFriendly('night');
+
+
+var years = [2000,1965, 1965, 1978];
+
+function arrayCalc(arr, fn) {
+    var arrRes = [];
+    for(i = 0; i < arr.length; i++) {
+        arrRes.push(fn(arr[i]));
+    }
+    return arrRes;
+}
+
+function calcAge(el) {
+    return 2019 - el;
+}
+
+function fullAge(limit, age) {
+    return age >= limit;
+}
+
+var ages = arrayCalc(years,calcAge);
+var fullJapan = arrayCalc(ages, fullAge.bind(this, 20));
+console.log(ages);
+console.log(fullJapan);
+
